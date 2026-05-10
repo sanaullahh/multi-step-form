@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — Multi-Step Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="shell">
+
+    <!-- LEFT PANEL -->
+    <aside class="panel panel--left">
+      <div class="panel__brand">
+        <div class="brand-dot"></div>
+        <span>Forma</span>
+      </div>
+
+      <div class="panel__steps">
+        <div class="step-item" data-step="1" id="step-nav-1">
+          <div class="step-item__num">01</div>
+          <div class="step-item__info">
+            <span class="step-item__title">Personal Info</span>
+            <span class="step-item__sub">Name, email & phone</span>
+          </div>
+          <div class="step-item__check">✓</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="2" id="step-nav-2">
+          <div class="step-item__num">02</div>
+          <div class="step-item__info">
+            <span class="step-item__title">Account Setup</span>
+            <span class="step-item__sub">Username & password</span>
+          </div>
+          <div class="step-item__check">✓</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="3" id="step-nav-3">
+          <div class="step-item__num">03</div>
+          <div class="step-item__info">
+            <span class="step-item__title">Preferences</span>
+            <span class="step-item__sub">Plan & interests</span>
+          </div>
+          <div class="step-item__check">✓</div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="4" id="step-nav-4">
+          <div class="step-item__num">04</div>
+          <div class="step-item__info">
+            <span class="step-item__title">Review</span>
+            <span class="step-item__sub">Confirm your details</span>
+          </div>
+          <div class="step-item__check">✓</div>
+        </div>
+      </div>
+
+      <div class="panel__saved" id="savedIndicator">
+        <span class="saved-dot"></span>
+        Progress auto-saved
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <main class="panel panel--right">
+
+      <!-- Progress bar -->
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="progressFill"></div>
+      </div>
+
+      <!-- Form steps container -->
+      <div class="form-container">
+
+        <!-- ── STEP 1: Personal Info ── -->
+        <div class="form-step" id="form-step-1">
+          <div class="step-header">
+            <div class="step-tag">Step 1 of 4</div>
+            <h2>Tell us about yourself</h2>
+            <p>We just need a few basic details to get started.</p>
+          </div>
+
+          <div class="fields">
+            <div class="field-row">
+              <div class="field-group">
+                <label for="firstName">First Name <span class="req">*</span></label>
+                <input type="text" id="firstName" name="firstName" placeholder="e.g. Sanaullah" autocomplete="given-name" />
+                <span class="field-error" id="err-firstName"></span>
+              </div>
+              <div class="field-group">
+                <label for="lastName">Last Name <span class="req">*</span></label>
+                <input type="text" id="lastName" name="lastName" placeholder="e.g. Khan" autocomplete="family-name" />
+                <span class="field-error" id="err-lastName"></span>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">@</span>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+              </div>
+              <span class="field-error" id="err-email"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">☏</span>
+                <input type="tel" id="phone" name="phone" placeholder="+92 300 0000000" autocomplete="tel" />
+              </div>
+              <span class="field-error" id="err-phone"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: Account Setup ── -->
+        <div class="form-step hidden" id="form-step-2">
+          <div class="step-header">
+            <div class="step-tag">Step 2 of 4</div>
+            <h2>Set up your account</h2>
+            <p>Choose a unique username and a strong password.</p>
+          </div>
+
+          <div class="fields">
+            <div class="field-group">
+              <label for="username">Username <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">@</span>
+                <input type="text" id="username" name="username" placeholder="e.g. sana_dev" autocomplete="username" />
+              </div>
+              <span class="field-hint">3–20 characters, letters, numbers and underscores only.</span>
+              <span class="field-error" id="err-username"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="password">Password <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">◈</span>
+                <input type="password" id="password" name="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+                <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">👁</button>
+              </div>
+              <div class="strength-bar" id="strengthBar">
+                <div class="strength-bar__fill" id="strengthFill"></div>
+              </div>
+              <span class="strength-label" id="strengthLabel"></span>
+              <span class="field-error" id="err-password"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+              <div class="input-wrap">
+                <span class="input-icon">◈</span>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
+              </div>
+              <span class="field-error" id="err-confirmPassword"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="role">Your Role</label>
+              <select id="role" name="role">
+                <option value="">Select your role…</option>
+                <option value="developer">Frontend Developer</option>
+                <option value="designer">UI/UX Designer</option>
+                <option value="pm">Product Manager</option>
+                <option value="marketer">Marketer</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: Preferences ── -->
+        <div class="form-step hidden" id="form-step-3">
+          <div class="step-header">
+            <div class="step-tag">Step 3 of 4</div>
+            <h2>Your preferences</h2>
+            <p>Choose a plan and tell us what you're interested in.</p>
+          </div>
+
+          <div class="fields">
+            <div class="field-group">
+              <label>Select Plan <span class="req">*</span></label>
+              <div class="plan-cards" id="planCards">
+                <div class="plan-card" data-plan="starter">
+                  <div class="plan-card__icon">◌</div>
+                  <div class="plan-card__name">Starter</div>
+                  <div class="plan-card__price">Free</div>
+                  <div class="plan-card__desc">Perfect for individuals just starting out.</div>
+                </div>
+                <div class="plan-card" data-plan="pro">
+                  <div class="plan-card__badge">Popular</div>
+                  <div class="plan-card__icon">◈</div>
+                  <div class="plan-card__name">Pro</div>
+                  <div class="plan-card__price">$12<span>/mo</span></div>
+                  <div class="plan-card__desc">For professionals who need more power.</div>
+                </div>
+                <div class="plan-card" data-plan="enterprise">
+                  <div class="plan-card__icon">⬡</div>
+                  <div class="plan-card__name">Enterprise</div>
+                  <div class="plan-card__price">$49<span>/mo</span></div>
+                  <div class="plan-card__desc">For teams and large-scale projects.</div>
+                </div>
+              </div>
+              <span class="field-error" id="err-plan"></span>
+            </div>
+
+            <div class="field-group">
+              <label>Interests <span class="req">*</span></label>
+              <p class="field-hint">Pick at least one that applies to you.</p>
+              <div class="interest-tags" id="interestTags">
+                <button type="button" class="tag" data-interest="frontend">Frontend</button>
+                <button type="button" class="tag" data-interest="backend">Backend</button>
+                <button type="button" class="tag" data-interest="design">Design</button>
+                <button type="button" class="tag" data-interest="devops">DevOps</button>
+                <button type="button" class="tag" data-interest="mobile">Mobile</button>
+                <button type="button" class="tag" data-interest="ai">AI / ML</button>
+                <button type="button" class="tag" data-interest="security">Security</button>
+                <button type="button" class="tag" data-interest="data">Data</button>
+              </div>
+              <span class="field-error" id="err-interests"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="bio">Short Bio</label>
+              <textarea id="bio" name="bio" placeholder="Tell us a little about yourself (optional)…" rows="3"></textarea>
+              <span class="char-count" id="bioCount">0 / 200</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STEP 4: Review ── -->
+        <div class="form-step hidden" id="form-step-4">
+          <div class="step-header">
+            <div class="step-tag">Step 4 of 4</div>
+            <h2>Review your details</h2>
+            <p>Everything look good? Go ahead and submit.</p>
+          </div>
+
+          <div class="review-card" id="reviewCard">
+            <!-- Filled dynamically -->
+          </div>
+
+          <div class="field-group" style="margin-top: 20px;">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agreeTerms" />
+              <span class="checkbox-custom"></span>
+              <span>I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a> <span class="req">*</span></span>
+            </label>
+            <span class="field-error" id="err-terms"></span>
+          </div>
+
+          <div class="field-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agreeMarketing" />
+              <span class="checkbox-custom"></span>
+              <span>Send me product updates and tips (optional)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ── SUCCESS ── -->
+        <div class="form-step hidden" id="form-step-success">
+          <div class="success-screen">
+            <div class="success-icon">✦</div>
+            <h2>You're all set!</h2>
+            <p>Your account has been created successfully. We'll send a confirmation to your email shortly.</p>
+            <div class="success-summary" id="successSummary"></div>
+            <button class="btn btn--primary" id="startOverBtn">Start Over</button>
+          </div>
+        </div>
+
+      </div><!-- /form-container -->
+
+      <!-- Navigation buttons -->
+      <div class="form-nav" id="formNav">
+        <button class="btn btn--ghost" id="prevBtn" style="visibility:hidden">← Back</button>
+        <div class="step-dots" id="stepDots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button class="btn btn--primary" id="nextBtn">Continue →</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
